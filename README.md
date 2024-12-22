@@ -1,3 +1,17 @@
+**NOTE** 
+
+This is a fork specicically made to work with multiple csv files (danbooru wildprompting).
+When this module is loaded it reads all of then csv files in prompt_sets folder and **dynamically registers a separate comfyui node for each of them**
+Also, when a csv field has "yui, sao" tag and a weight is modified it will only apply it to yui for (yui:2.0), sao
+I am not sure if the amount of files it can process is limited somehow, maybe by startup times. I am uisng it with 4.
+
+To leverage the consitent load of danbooru characters file I added a new rng mode to the base node: "Follow". 
+This will read the core tags from the same artist that gets selected in the previous step.
+
+NOTE: I am not a python programmer, neither do I have ANY idea of what I am doing. 
+I am leveraging LLM refactor and manual console debugging to do this. Don't at me, lol. The fact it's working at all is a miracle.
+
+
 # ComfyUI-CSV-prompt-builder
 
 This is a simple node for creating prompts using a .csv file. I created this node as an easy way to output different prompts each time a workflow is run.
