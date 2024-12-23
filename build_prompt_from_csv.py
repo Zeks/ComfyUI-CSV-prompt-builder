@@ -111,12 +111,12 @@ class BuildPromptBase(CSVConfigBase):
             choice = None
             parts = []
             if mode == "Randomize":
-                current_random = random.randint(0, len(categories[header]))
+                current_random = random.randint(0, len(categories[header])-1)
                 temp = categories[header][current_random]
                 parts = [item.strip() for item in temp.split(',', 1)]
                 if len(parts) > 1:
                     choice = parts[0]
-                    part2 = "".join(parts[1:])
+                    part2 = ",".join(parts[1:])
                 else:
                     choice = parts[0]
                     part2 = None
@@ -138,7 +138,7 @@ class BuildPromptBase(CSVConfigBase):
                 if len(parts) == 1:
                     prompt_parts.append(choice) 
                 elif len(parts) > 1:
-                    prompt_parts.append(choice + part2) 
+                    prompt_parts.append(choice + "," + part2) 
             else:
                 if len(parts) == 1:
                     prompt_parts.append(f"({choice}:{weight:.2f})")                    
